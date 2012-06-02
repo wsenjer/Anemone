@@ -1,0 +1,265 @@
+/* Globals */
+/*********************************************************************/
+    /* Clear Floated Elements */
+            .clear {
+                clear: both;
+                    }
+                    
+    /*******************
+         Messages     
+    *******************/
+    
+        /* Error Message */
+            .error {
+	           -moz-border-radius:        2px;
+	           -moz-box-shadow:           0 0 6px #FCC;
+	           -webkit-border-radius:     2px;
+	           -webkit-box-shadow:        0 0 8px #FCC;
+	           background:                #FFF4F4;
+	           border:                    1px #FFC6C6 solid;
+	           border-radius:             2px;
+	           box-shadow:                0 0 6px #FCC;
+	           margin:                    10px 0;
+	           padding:                   5px;
+               font-family:               tahoma;
+               font-size:                 9pt;
+                    }
+    
+    /* Information Message */
+            .info {
+	           -moz-border-radius:        2px;
+	           -moz-box-shadow:           0 0 6px #D5FFD5;
+	           -webkit-border-radius:     2px;
+	           -webkit-box-shadow:        0 0 6px #D5FFD5;
+	           background:                #F0FFF0;
+	           border:                    1px #A0F08C solid;
+	           border-radius:             2px;
+	           box-shadow:                0 0 6px #D5FFD5;
+	           margin:                    10px 0;
+	           padding:                   5px;
+               font-family:               tahoma;
+               font-size:                 9pt;
+                    }
+    
+    /* Warning Message */
+            .warn {
+        	   -moz-border-radius:        2px;
+	           -moz-box-shadow:           0 0 6px #FFFF80;
+	           -webkit-border-radius:     2px;
+	           -webkit-box-shadow:        0 0 6px #FFFF80;
+	           background:                #FFFFE8;
+	           border:                    1px #D9D900 solid;
+	           border-radius:             2px;
+	           box-shadow:                0 0 6px #FFFF80;
+	           margin:                    10px 0;
+	           padding:                   5px;
+               font-family:               tahoma;
+               font-size:                 9pt;
+                    }
+/*********************************************************************/
+
+/* Logout Link */
+            #logout a {
+               padding:                   3px;
+               color:                     #FF6A6A;
+               font-family:               tahoma;
+               font-size:                 9pt;
+               font-weight:               bold;
+               text-decoration:           none;
+                        }  
+                         
+            #logout a:hover {
+               color:                     red;
+                        }
+
+
+/* Menu items */
+            #menu ul li {
+               display:                   inline-block;
+               margin:                    0 0 1px -4px;
+                /* Fix IE */
+               *padding:                  10px;
+               *display:                  inline;
+               zoom:                      1;
+               *margin:                   -10px 0 -10px -10px;
+               *border-left:              1px solid silver;
+               }
+               
+            #menu ul li a {
+               text-decoration:           none;
+               font-family:               tahoma;
+               font-size:                 10pt;
+               padding:                   12px;
+               font-weight:               bold;
+               color:                     gray;
+               border-left:               1px solid silver;
+               /* Fix IE */
+               *padding:                  20px 10px;
+               *border:                   none;
+                    }
+                    
+            #menu ul li a:hover,#menu ul li .active {
+               background:                url(../images/grad_active.png) repeat-x;
+               *background: none;
+               color:                     #0080FF;
+                        }
+/* Sidebar (Vertical Menu) items */
+
+            #sidebar ul {
+               margin:                    0 0;
+                }
+                
+            #sidebar ul li {
+               padding:                   0 5px;
+               margin:                    0 -5px;
+                }
+                
+            #sidebar ul li a {
+               text-decoration:           none;
+               font-family:               tahoma;
+               font-size:                 10pt;
+               width:                     186px;
+               display:                   block;
+               padding:                   7px;
+               font-weight:               bold;
+               color:                     gray;
+            }
+            
+            #sidebar ul li a:hover,#sidebar ul li .active {
+               background:                url(../images/grad_back.png) repeat-x;
+               color:                     #0080FF;
+                }
+                
+/****************
+      Form
+****************/
+
+            /* Form Fieldset */
+            .form fieldset {
+               border:                    2px solid #eee;
+               padding:                   5px;
+               margin:                    10px;
+               border-radius:             2px;
+               -moz-border-radius:        2px;
+               -webkit-border-radius:     2px;
+               -webkit-box-shadow:        0 0 4px #eee;
+               -moz-box-shadow:           0 0 4px #eee;
+                }
+            /* Form Title */    
+            .form fieldset legend {
+               font-family:               tahoma;
+               font-size:                 9pt;
+               font-weight:               bold;
+               padding:                   5px 10px;
+               color:                     green;
+               -webkit-box-shadow:        0 0 4px #eee;
+               -moz-box-shadow:           0 0 4px #eee;
+               background:                white;
+                        }
+            /* Input Title */    
+            .form fieldset p label {
+               display:                   inline-block;
+               min-width:                 100px;
+               font-family:               tahoma;
+               font-size:                 10pt;
+               float:                     right;
+               line-height:               22px;
+               padding-left:              5px;
+               /* Fix IE */               
+               *display:                  inline;
+               zoom:1;
+               *width:                    auto !important;
+               *width:                    100px;    
+            }
+            /* Form input */
+            .form fieldset p input , .form fieldset p select , .form fieldset p textarea {
+               display:                   inline-block;
+               width:                     250px;
+               font-family:               tahoma;
+               font-size:                 9pt;
+               float:                     right;
+               border:                    1px solid #eee;
+               padding:                   3px;
+               border-radius:             2px;
+               -moz-border-radius:        2px;
+               -webkit-border-radius:     2px;
+               -webkit-box-shadow:        0 0 3px #eee;
+               -moz-box-shadow:           0 0 3px #eee;
+               /* Fix IE */
+               *display:                  inline;
+               zoom:                      1;        
+            }
+            /* Form Button */
+            .form fieldset p input[type=submit],.form fieldset input[type=button],.form fieldset input[type=reset],.button {
+               font-family:               tahoma;
+               font-size:                 9pt;
+               color:                     silver;
+               background:                url(../images/grad_back.png) repeat-x;
+               padding:                   6px 3px;
+               margin:                    3px;  
+               cursor:                    pointer;
+               width:                     100px;
+               border-radius:             2px;
+               -moz-border-radius:        2px;
+               -webkit-border-radius:     2px;
+               font-weight:               bold;
+            }
+            
+            .form fieldset p input:hover,.form fieldset input:focus,.form fieldset p select:hover,.form fieldset p select:hover {
+               border-color:              #A6D2FF;
+               outline:                   0;
+               color:                     #0080FF;
+               -webkit-box-shadow:        0 0 3px #eee ;
+               -moz-box-shadow:           0 0 3px #eee;
+            }
+            /* Form Element */
+            .form fieldset p {
+               display:                   block;
+               clear:                     both;
+               padding:                   10px 5px;
+               margin:                    3px 0;
+}
+
+/****************
+      Table
+****************/
+
+            /* Table */
+            .data {
+               border:                    2px solid #eee;
+               padding:                   5px;
+               margin:                    10px auto;
+               border-radius:             4px;
+               -moz-border-radius:        4px;
+               -webkit-border-radius:     4px;
+               -webkit-box-shadow:        0 0 4px #eee;
+               -moz-box-shadow:           0 0 4px #eee;
+               font-family:               tahoma;
+               font-size:                 9pt;
+               text-align:                center;
+               width:                     600px;
+    
+            }
+            
+            /* Table Header */
+            .data th {
+               font-weight:               bold;
+               padding:                   10px 5px;
+               border-bottom:             2px #eee solid;
+               border-right:              2px solid #eee;
+               text-align:                center;
+               background:                url(../images/grad_back.png) repeat-x;
+               color:                     #0080FF;
+            }
+            
+            /* Table Data Cell */
+            .data td {
+               padding:                   5px;
+               border-right:              1px solid #eee;
+               background:                url(../images/grad_active.png) repeat-x;
+            }
+            
+            /* Table Row */
+            .data tr {
+               border-bottom:             1px solid #eee;
+            }

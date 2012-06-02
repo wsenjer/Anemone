@@ -1,0 +1,78 @@
+/* Layouts */
+/**********************************************************************/
+    /* Body */
+        body {
+            text-align:             center !important;
+            direction:              rtl;
+        }
+    
+    /* Header */
+        #header {
+            background:             url(../images/grad_back.png) repeat-x;
+            height:                 50px;
+            line-height:            48px;
+            padding:                0 20px;
+        }
+    
+    /* Salutation */
+        #hello {
+            font-family:            tahoma;
+            font-size:              9pt;
+            font-weight:            bold;
+            float:                  right;
+            color:                  gray;
+        }
+    
+    /* Logout */
+        #logout {
+            float:                  left;
+        }
+    
+    /* Wrapper */
+        #wrapper{
+            width:                  900px;
+            margin:                 10px auto;
+            text-align:             right;
+            border:                 1px solid silver;
+            border-radius:          2px;
+            -moz-border-radius:     2px;
+            -webkit-border-radius:  2px;
+            -webkit-box-shadow:     0 0 4px #eee ;
+            -moz-box-shadow:        0 0 4px #eee;
+        }
+    
+    /* Messages Wrapper */
+        #msgs-wrapper {
+            width:                  900px;
+            margin:                 10px auto;
+            text-align:             right;
+        }
+    
+    /* Horizontal Menu */
+        #menu {
+            background:             url(../images/grad_back.png) repeat-x;
+            border-bottom:          1px solid silver;
+            padding:                10px 0;
+    /* Fix IE */
+            *margin-right:          -10px;
+        }
+    
+    /* Sidebar (Vertical Menu) */
+        #sidebar {
+        background:                 #F9F9F9;
+        float:                      right;
+        width:                      200px;
+        min-height:                 300px;
+    /* Fix IE */
+        *height:                    auto !important;
+        *height:                    300px;
+        }
+    
+    /* Container */
+        #container {
+            float:                  right;
+            width:                  700px;
+            min-height:             300px;
+            -webkit-box-shadow:     0 0 4px #eee;
+            -moz-box-shadow:        0 0 4px #eee;
+        }
