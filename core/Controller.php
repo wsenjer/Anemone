@@ -67,6 +67,12 @@ class Controller{
                 
             }
             
+             if($rule['rule']=="length"){
+            	if(sizeof($rule['value'])<=$rule['length']){
+            		$errors[] = $rule[$_SESSION['language'].'_message'];	
+            	}
+            }
+            
         }
         
         return $errors;
