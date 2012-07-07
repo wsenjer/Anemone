@@ -11,5 +11,6 @@ of familiar PHP libraries and put it togother to make an easy and rapid developm
 Libraries Included
 ###################
 
-#. Smarty v 3.0
-#. Idiorm 
+# Smarty v 3.0
+# Idiorm 
+# PHPMailer v 5.1
