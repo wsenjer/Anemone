@@ -3,13 +3,13 @@
 class admincp extends Controller
 {
 
-//TODO:SET custom date for structure images
-    private $_salt = "#TRfd67Wk098"; // don't change this
+
+    private $_salt = "#TRfd67Wk025"; // don't change this
 
 
     public function login()
     {
-        //print sha1(md5($_POST['password'].$this->_salt));
+       
 
         if (!empty($_POST)) {
             $db = $this->load->model("admin");
