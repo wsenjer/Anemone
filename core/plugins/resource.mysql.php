@@ -20,7 +20,8 @@
  * @package Resource-examples
  * @author Rodney Rehm
  */
-class Smarty_Resource_Mysql extends Smarty_Resource_Custom {
+class Smarty_Resource_Mysql extends Smarty_Resource_Custom
+{
     // PDO instance
     protected $db;
     // prepared fetch() statement
@@ -28,7 +29,8 @@ class Smarty_Resource_Mysql extends Smarty_Resource_Custom {
     // prepared fetchTimestamp() statement
     protected $mtime;
 
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $this->db = new PDO("mysql:dbname=test;host=127.0.0.1", "smarty", "smarty");
         } catch (PDOException $e) {
@@ -67,7 +69,8 @@ class Smarty_Resource_Mysql extends Smarty_Resource_Custom {
      * @param string $name template name
      * @return integer timestamp (epoch) the template was modified
      */
-    protected function fetchTimestamp($name) {
+    protected function fetchTimestamp($name)
+    {
         $this->mtime->execute(array('name' => $name));
         $mtime = $this->mtime->fetchColumn();
         $this->mtime->closeCursor();

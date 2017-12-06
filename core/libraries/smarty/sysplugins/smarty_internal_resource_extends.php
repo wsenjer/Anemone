@@ -16,7 +16,8 @@
 * @package Smarty
 * @subpackage TemplateResources
 */
-class Smarty_Internal_Resource_Extends extends Smarty_Resource {
+class Smarty_Internal_Resource_Extends extends Smarty_Resource
+{
 
     /**
     * populate Source Object with meta data from Resource
@@ -107,13 +108,13 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource {
                 while ($_start+1 < $_result_count) {
                     $_end = 0;
                     $_level = 1;
-                    if (substr($_result[0][$_start][0],0,strlen($source->smarty->left_delimiter)+1) == $source->smarty->left_delimiter.'*') {
+                    if (substr($_result[0][$_start][0], 0, strlen($source->smarty->left_delimiter)+1) == $source->smarty->left_delimiter.'*') {
                         $_start++;
                         continue;
                     }
                     while ($_level != 0) {
                         $_end++;
-                        if (substr($_result[0][$_start + $_end][0],0,strlen($source->smarty->left_delimiter)+1) == $source->smarty->left_delimiter.'*') {
+                        if (substr($_result[0][$_start + $_end][0], 0, strlen($source->smarty->left_delimiter)+1) == $source->smarty->left_delimiter.'*') {
                             continue;
                         }
                         if (!strpos($_result[0][$_start + $_end][0], '/')) {
@@ -142,7 +143,4 @@ class Smarty_Internal_Resource_Extends extends Smarty_Resource {
     {
         return str_replace(':', '.', basename($source->filepath));
     }
-
 }
-
-?>

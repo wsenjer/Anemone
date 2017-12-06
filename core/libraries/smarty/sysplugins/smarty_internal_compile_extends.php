@@ -16,7 +16,8 @@
 * @package Smarty
 * @subpackage Compiler
 */
-class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
+class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase
+{
 
     /**
     * Attribute definition: Overwrites base class.
@@ -81,13 +82,13 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
         while ($_start+1 < $_result_count) {
             $_end = 0;
             $_level = 1;
-            if (substr($_result[0][$_start][0],0,strlen($compiler->smarty->left_delimiter)+1) == $compiler->smarty->left_delimiter.'*') {
+            if (substr($_result[0][$_start][0], 0, strlen($compiler->smarty->left_delimiter)+1) == $compiler->smarty->left_delimiter.'*') {
                 $_start++;
                 continue;
             }
             while ($_level != 0) {
                 $_end++;
-                if (substr($_result[0][$_start + $_end][0],0,strlen($compiler->smarty->left_delimiter)+1) == $compiler->smarty->left_delimiter.'*') {
+                if (substr($_result[0][$_start + $_end][0], 0, strlen($compiler->smarty->left_delimiter)+1) == $compiler->smarty->left_delimiter.'*') {
                     continue;
                 }
                 if (!strpos($_result[0][$_start + $_end][0], '/')) {
@@ -96,8 +97,11 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
                     $_level--;
                 }
             }
-            $_block_content = str_replace($compiler->smarty->left_delimiter . '$smarty.block.parent' . $compiler->smarty->right_delimiter, '%%%%SMARTY_PARENT%%%%',
-            substr($_content, $_result[0][$_start][1] + strlen($_result[0][$_start][0]), $_result[0][$_start + $_end][1] - $_result[0][$_start][1] - + strlen($_result[0][$_start][0])));
+            $_block_content = str_replace(
+                $compiler->smarty->left_delimiter . '$smarty.block.parent' . $compiler->smarty->right_delimiter,
+                '%%%%SMARTY_PARENT%%%%',
+            substr($_content, $_result[0][$_start][1] + strlen($_result[0][$_start][0]), $_result[0][$_start + $_end][1] - $_result[0][$_start][1] - + strlen($_result[0][$_start][0]))
+            );
             Smarty_Internal_Compile_Block::saveBlockData($_block_content, $_result[0][$_start][0], $compiler->template, $filepath);
             $_start = $_start + $_end + 1;
         }
@@ -115,7 +119,4 @@ class Smarty_Internal_Compile_Extends extends Smarty_Internal_CompileBase {
         $compiler->abort_and_recompile = true;
         return '';
     }
-
 }
-
-?>

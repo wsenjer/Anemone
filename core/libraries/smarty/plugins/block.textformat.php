@@ -108,5 +108,3 @@ function smarty_block_textformat($params, $content, $template, &$repeat)
         return $_output;
     }
 }
-
-?>

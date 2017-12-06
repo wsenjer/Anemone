@@ -24,14 +24,16 @@
  * @package CacheResource-examples
  * @author Rodney Rehm
  */
-class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom {
+class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom
+{
     // PDO instance
     protected $db;
     protected $fetch;
     protected $fetchTimestamp;
     protected $save;
     
-    public function __construct() {
+    public function __construct()
+    {
         try {
             $this->db = new PDO("mysql:dbname=test;host=127.0.0.1", "smarty", "smarty");
         } catch (PDOException $e) {
@@ -58,7 +60,7 @@ class Smarty_CacheResource_Mysql extends Smarty_CacheResource_Custom {
     {
         $this->fetch->execute(array('id' => $id));
         $row = $this->fetch->fetch();
-        $this->fetch->closeCursor();        
+        $this->fetch->closeCursor();
         if ($row) {
             $content = $row['content'];
             $mtime = $row['modified'];

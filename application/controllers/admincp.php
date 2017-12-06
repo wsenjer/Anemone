@@ -2,15 +2,11 @@
 
 class admincp extends Controller
 {
-
-
     private $_salt = "#TRfd67Wk025"; // don't change this
 
 
     public function login()
     {
-       
-
         if (!empty($_POST)) {
             $db = $this->load->model("admin");
             $admin = $db->select_expr('id,username as name')->where('username', $_POST['username'])->
@@ -21,7 +17,7 @@ class admincp extends Controller
                 $this->session->login($admin);
                 $this->redirect_to('admincp/main');
             } else {
-                $this->output->flash("كلمة المرور أو اسم المستخدم خاطئة", "error");
+                $this->output->flash("Username/Password is wrong", "error");
                 /// $this->redirect_to('admincp/login');
             }
         }
@@ -29,15 +25,13 @@ class admincp extends Controller
 
     public function main()
     {
-
     }
     
     
   
       
-    public function lists($action = "" , $id = NULL){
-        
-        
+    public function lists($action = "", $id = null)
+    {
         switch ($action) {
             
 
@@ -53,12 +47,10 @@ class admincp extends Controller
                 $this->output->assign('lists', $lists);
 
         }
-        
     }
     
-    public function tags($action = "" , $id = NULL){
-        
-        
+    public function tags($action = "", $id = null)
+    {
         switch ($action) {
             
 
@@ -74,14 +66,12 @@ class admincp extends Controller
                 $this->output->assign('tags', $tags);
 
         }
-        
     }
     
     
     
-    public function members($action = "" , $id = NULL){
-        
-        
+    public function members($action = "", $id = null)
+    {
         switch ($action) {
             
 
@@ -97,7 +87,6 @@ class admincp extends Controller
                 $this->output->assign('members', $members);
 
         }
-        
     }
    
     
@@ -106,9 +95,8 @@ class admincp extends Controller
   
     
   
-    public function managers($action = "" , $id = NULL){
-        
-        
+    public function managers($action = "", $id = null)
+    {
         switch ($action) {
             case "add":
                 
@@ -127,7 +115,7 @@ class admincp extends Controller
                 $manager = $this->load->model("admin")->find_one($id)->as_array();
                 if (!empty($_POST)) {
                     $this->model->edit_manager($id);
-                } 
+                }
                 $this->output->assign('manager', $manager);
 
                 $this->output->render("manager_edit");
@@ -138,13 +126,12 @@ class admincp extends Controller
                 $this->output->assign('managers', $managers);
 
         }
-        
     }
 
 
-    public function options(){
-        
-        if(!empty($_POST)){
+    public function options()
+    {
+        if (!empty($_POST)) {
             $options = $this->load->model("options")->find_one(1);
             $options->app_name = $_POST['app_name'];
             $options->app_desc = $_POST['app_desc'];
@@ -156,16 +143,14 @@ class admincp extends Controller
            
             $options->app_keywords_en = $_POST['app_keywords_en'];
             $options->save();
-            $this->output->flash("تم تحديث الإعدادات بنجاح","info");
+            $this->output->flash("تم تحديث الإعدادات بنجاح", "info");
         }
-            $options = $this->load->model("options")->find_one(1)->as_array();
-            $this->output->assign("options",$options);
-        
-            
-        
+        $options = $this->load->model("options")->find_one(1)->as_array();
+        $this->output->assign("options", $options);
     }
     
-    public function pages($action = '', $id = NULL){
+    public function pages($action = '', $id = null)
+    {
         switch ($action) {
             case "add":
                 
@@ -202,11 +187,9 @@ class admincp extends Controller
     }
 
 
-public function logout(){
-    $this->session->logout();
-    $this->redirect_to("admincp/login");
+    public function logout()
+    {
+        $this->session->logout();
+        $this->redirect_to("admincp/login");
+    }
 }
-
-}
-
-?>

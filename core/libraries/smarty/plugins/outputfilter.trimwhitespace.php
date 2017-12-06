@@ -39,7 +39,7 @@ function smarty_outputfilter_trimwhitespace($source, Smarty_Internal_Template $s
     }
 
     // Strip all HTML-Comments
-    $source = preg_replace( '#<!--.*?-->#ms', '', $source );
+    $source = preg_replace('#<!--.*?-->#ms', '', $source);
 
     // capture html elements not to be messed with
     $_offset = 0;
@@ -67,7 +67,7 @@ function smarty_outputfilter_trimwhitespace($source, Smarty_Internal_Template $s
         '#>\s+$#Ss' => '>',
     );
 
-    $source = preg_replace( array_keys($expressions), array_values($expressions), $source );
+    $source = preg_replace(array_keys($expressions), array_values($expressions), $source);
     // note: for some very weird reason trim() seems to remove spaces inside attributes.
     // maybe a \0 byte or something is interfering?
     // $source = trim( $source );
@@ -88,5 +88,3 @@ function smarty_outputfilter_trimwhitespace($source, Smarty_Internal_Template $s
 
     return $source;
 }
-
-?>

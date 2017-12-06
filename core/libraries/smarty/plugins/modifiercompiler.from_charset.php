@@ -30,5 +30,3 @@ function smarty_modifiercompiler_from_charset($params, $compiler)
 
     return 'mb_convert_encoding(' . $params[0] . ', SMARTY_RESOURCE_CHAR_SET, ' . $params[1] . ')';
 }
-
-?>

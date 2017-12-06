@@ -15,51 +15,43 @@
 
 
 
-if ( ! function_exists('get_config'))
-{
-	function &get_config($replace = array())
-	{
-		static $_config;
+if (! function_exists('get_config')) {
+    function &get_config($replace = array())
+    {
+        static $_config;
 
-		if (isset($_config))
-		{
-			return $_config[0];
-		}
+        if (isset($_config)) {
+            return $_config[0];
+        }
 
-		// Is the config file in the environment folder?
-		if ( ! defined('ENVIRONMENT') OR ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/config.php'))
-		{
-			$file_path = APPPATH.'config/config.php';
-		}
+        // Is the config file in the environment folder?
+        if (! defined('ENVIRONMENT') or ! file_exists($file_path = APPPATH.'config/'.ENVIRONMENT.'/config.php')) {
+            $file_path = APPPATH.'config/config.php';
+        }
 
-		// Fetch the config file
-		if ( ! file_exists($file_path))
-		{
-			exit('The configuration file does not exist.');
-		}
+        // Fetch the config file
+        if (! file_exists($file_path)) {
+            exit('The configuration file does not exist.');
+        }
 
-		require($file_path);
+        require($file_path);
 
-		// Does the $config array exist in the file?
-		if ( ! isset($config) OR ! is_array($config))
-		{
-			exit('Your config file does not appear to be formatted correctly.');
-		}
+        // Does the $config array exist in the file?
+        if (! isset($config) or ! is_array($config)) {
+            exit('Your config file does not appear to be formatted correctly.');
+        }
 
-		// Are any values being dynamically replaced?
-		if (count($replace) > 0)
-		{
-			foreach ($replace as $key => $val)
-			{
-				if (isset($config[$key]))
-				{
-					$config[$key] = $val;
-				}
-			}
-		}
+        // Are any values being dynamically replaced?
+        if (count($replace) > 0) {
+            foreach ($replace as $key => $val) {
+                if (isset($config[$key])) {
+                    $config[$key] = $val;
+                }
+            }
+        }
 
-		return $_config[0] =& $config;
-	}
+        return $_config[0] =& $config;
+    }
 }
 
 
@@ -78,62 +70,54 @@ if ( ! function_exists('get_config'))
 * @param	string	the class name prefix
 * @return	object
 */
-if ( ! function_exists('load_class'))
-{
-	function &load_class($class, $directory = 'libraries')
-	{
-		static $_classes = array();
+if (! function_exists('load_class')) {
+    function &load_class($class, $directory = 'libraries')
+    {
+        static $_classes = array();
 
-		// Does the class exist?  If so, we're done...
-		if (isset($_classes[$class]))
-		{
-			return $_classes[$class];
-		}
+        // Does the class exist?  If so, we're done...
+        if (isset($_classes[$class])) {
+            return $_classes[$class];
+        }
 
-		$name = FALSE;
+        $name = false;
 
-		// Look for the class first in the native system/libraries folder
-		// thenin the local application/libraries folder
-		foreach (array(BASEPATH, APPPATH) as $path)
-		{
-			if (file_exists($path.$directory.'/'.$class.'.php'))
-			{
-				$name = $class;
+        // Look for the class first in the native system/libraries folder
+        // thenin the local application/libraries folder
+        foreach (array(BASEPATH, APPPATH) as $path) {
+            if (file_exists($path.$directory.'/'.$class.'.php')) {
+                $name = $class;
 
-				if (class_exists($name) === FALSE)
-				{
-					require($path.$directory.'/'.$class.'.php');
-				}
+                if (class_exists($name) === false) {
+                    require($path.$directory.'/'.$class.'.php');
+                }
 
-				break;
-			}
-		}
+                break;
+            }
+        }
 
-		// Is the request a class extension?  If so we load it too
-		if (file_exists(BASEPATH.'/'.$directory.'/'.$class.'.php'))
-		{
-			$name = $class;
+        // Is the request a class extension?  If so we load it too
+        if (file_exists(BASEPATH.'/'.$directory.'/'.$class.'.php')) {
+            $name = $class;
 
-			if (class_exists($name) === FALSE)
-			{
-				require(BASEPATH.'/'.$directory.'/'.$class.'.php');
-			}
-		}
+            if (class_exists($name) === false) {
+                require(BASEPATH.'/'.$directory.'/'.$class.'.php');
+            }
+        }
 
-		// Did we find the class?
-		if ($name === FALSE)
-		{
-			// Note: We use exit() rather then show_error() in order to avoid a
-			// self-referencing loop with the Excptions class
-			exit('Unable to locate the specified class: '.$class.'.php');
-		}
+        // Did we find the class?
+        if ($name === false) {
+            // Note: We use exit() rather then show_error() in order to avoid a
+            // self-referencing loop with the Excptions class
+            exit('Unable to locate the specified class: '.$class.'.php');
+        }
 
-		// Keep track of what we just loaded
-		is_loaded($class);
+        // Keep track of what we just loaded
+        is_loaded($class);
 
-		$_classes[$class] = new $name();
-		return $_classes[$class];
-	}
+        $_classes[$class] = new $name();
+        return $_classes[$class];
+    }
 }
 
 
@@ -144,19 +128,17 @@ if ( ! function_exists('load_class'))
 * @access	public
 * @return	array
 */
-if ( ! function_exists('is_loaded'))
-{
-	function is_loaded($class = '')
-	{
-		static $_is_loaded = array();
+if (! function_exists('is_loaded')) {
+    function is_loaded($class = '')
+    {
+        static $_is_loaded = array();
 
-		if ($class != '')
-		{
-			$_is_loaded[strtolower($class)] = $class;
-		}
+        if ($class != '') {
+            $_is_loaded[strtolower($class)] = $class;
+        }
 
-		return $_is_loaded;
-	}
+        return $_is_loaded;
+    }
 }
 
 /**
@@ -171,31 +153,30 @@ if ( ! function_exists('is_loaded'))
 * @access	public
 * @return	void
 */
-if ( ! function_exists('show_error'))
-{
-	function show_error($message, $status_code = 500, $heading = 'An Error Was Encountered')
-	{
-		//$_error =& load_class('Exceptions', 'core');
-	//	echo $_error->show_error($heading, $message, 'error_general', $status_code);
+if (! function_exists('show_error')) {
+    function show_error($message, $status_code = 500, $heading = 'An Error Was Encountered')
+    {
+        //$_error =& load_class('Exceptions', 'core');
+        //	echo $_error->show_error($heading, $message, 'error_general', $status_code);
     
-print '<style type="text/css">';
-print '.error_404_info {';
-print '	text-align: center;';
-print '	background-color: #AEAE34;';
-print '}';
-print '.error_404 {';
-print '	text-align: center;';
-print '	background-color: #F89292;';
-print '}';
-print '</style>';
+        print '<style type="text/css">';
+        print '.error_404_info {';
+        print '	text-align: center;';
+        print '	background-color: #AEAE34;';
+        print '}';
+        print '.error_404 {';
+        print '	text-align: center;';
+        print '	background-color: #F89292;';
+        print '}';
+        print '</style>';
     
-echo '<p class="error_404">'.$message.'</p>';
-echo '<p class="error_404_info">for support and help you can visit <a href="http://anemone.ps">';
-echo 'anemone.ps</a></p>';
+        echo '<p class="error_404">'.$message.'</p>';
+        echo '<p class="error_404_info">for support and help you can visit <a href="http://anemone.ps">';
+        echo 'anemone.ps</a></p>';
 
     
-		exit;
-	}
+        exit;
+    }
 }
 
 
@@ -209,15 +190,14 @@ echo 'anemone.ps</a></p>';
 * @access	public
 * @return	void
 */
-if ( ! function_exists('show_404'))
-{
-	function show_404($page = '', $log_error = TRUE)
-	{
-	//	$_error =& load_class('Exceptions', 'core');
-	//	$_error->show_404($page, $log_error);
-    echo $page. " not found ";
-		exit;
-	}
+if (! function_exists('show_404')) {
+    function show_404($page = '', $log_error = true)
+    {
+        //	$_error =& load_class('Exceptions', 'core');
+        //	$_error->show_404($page, $log_error);
+        echo $page. " not found ";
+        exit;
+    }
 }
 
 
@@ -228,7 +208,7 @@ if ( ! function_exists('show_404'))
     foreach ($dir as $directory) {
 
         if (file_exists($directory . $class_name . '.php')) {
-            
+
             require_once ($directory . $class_name . '.php');
 
             return;
@@ -237,5 +217,3 @@ if ( ! function_exists('show_404'))
         }
     }
 }*/
-
-?>

@@ -15,7 +15,8 @@
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
+class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase
+{
 
     /**
      * Compiles code for the {while} tag
@@ -57,7 +58,6 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
             return "<?php while ({$parameter['if condition']}){?>";
         }
     }
-
 }
 
 /**
@@ -66,7 +66,8 @@ class Smarty_Internal_Compile_While extends Smarty_Internal_CompileBase {
  * @package Smarty
  * @subpackage Compiler
  */
-class Smarty_Internal_Compile_Whileclose extends Smarty_Internal_CompileBase {
+class Smarty_Internal_Compile_Whileclose extends Smarty_Internal_CompileBase
+{
 
     /**
      * Compiles code for the {/while} tag
@@ -84,7 +85,4 @@ class Smarty_Internal_Compile_Whileclose extends Smarty_Internal_CompileBase {
         $compiler->nocache = $this->closeTag($compiler, array('while'));
         return "<?php }?>";
     }
-
 }
-
-?>

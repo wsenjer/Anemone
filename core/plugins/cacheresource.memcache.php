@@ -12,7 +12,8 @@
  * @package CacheResource-examples
  * @author Rodney Rehm
  */
-class Smarty_CacheResource_Memcache extends Smarty_CacheResource_KeyValueStore {
+class Smarty_CacheResource_Memcache extends Smarty_CacheResource_KeyValueStore
+{
     /**
      * memcache instance
      * @var Memcache
@@ -22,7 +23,7 @@ class Smarty_CacheResource_Memcache extends Smarty_CacheResource_KeyValueStore {
     public function __construct()
     {
         $this->memcache = new Memcache();
-        $this->memcache->addServer( '127.0.0.1', 11211 );
+        $this->memcache->addServer('127.0.0.1', 11211);
     }
     
     /**

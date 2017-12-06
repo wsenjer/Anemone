@@ -29,37 +29,36 @@ $config['default_action'] = "index";
 
 
 /**
- * 
- * 
+ *
+ *
  * Router
- * 
- * 
+ *
+ *
  * */
  
  
  /*$config['router'] = array(
-                     "realestate/:real_id" => "realestate/show/:real_id"    
+                     "realestate/:real_id" => "realestate/show/:real_id"
  );*/
  
  
  /**
-  * 
-  * 
-  * 
-  * 
+  *
+  *
+  *
+  *
   * Language
-  * 
-  * 
+  *
+  *
   * **/
   
-  $config['language'] = FALSE;
+  $config['language'] = false;
   
   /**
-   * 
-   * 
-   * 
-   * 
+   *
+   *
+   *
+   *
    * */
    
-   $config['auth_controllers'] = array("admincp"); 
-?>
+   $config['auth_controllers'] = array("admincp");
